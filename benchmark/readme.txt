@@ -1,0 +1,2 @@
+In this video:https://www.youtube.com/watch?v=ea5DiCg8HOY&feature=youtu.be&t=46m28s by Andrei Alexandrescu mentions about benchmarking returning by value
+for std::string vs passing by const ref. This is a crude attempt at doing the same for vector<unsigned char>. I am not using std::string for it introduces with itself the variability of SSO and COW (the mainline version of gcc still has that bug). Although it would be quite trivial to replace vector with a string.
