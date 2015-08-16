@@ -1,4 +1,8 @@
 #pragma once
+// include guard
+#ifndef __ALLOCATION_TRACKER__
+#define __ALLOCATION_TRACKER__
+
 
 #ifdef TRACK_MEMORY
 
@@ -8,6 +12,9 @@
 #include <iostream>
 #include <assert.h>
 
+// static members that need to be defined in implementation
+//  std::map<void*, const char*> m_objectCollection;
+//  std::mutex m_collectionLock;
 class AllocMapper{
     public:
         static AllocMapper* GetAllocMapper(){
@@ -19,11 +26,13 @@ class AllocMapper{
         }
         
         void AddObjectCreated(void *ptr, const char* objectName){
+            std::lock_guard<std::mutex> lock(m_collectionLock);
             auto ret = m_objectCollection.emplace(ptr, objectName);
             assert(ret.second);
         }
         
         void RemoveObjectDeleted(void *ptr){
+            std::lock_guard<std::mutex> lock(m_collectionLock);
             auto deleted = m_objectCollection.erase(ptr);
             assert(deleted);
         }
@@ -46,21 +55,20 @@ class AllocMapper{
         AllocMapper(AllocMapper const&) = delete;
         void operator=(AllocMapper const&) = delete;
         std::map<void*, const char*> m_objectCollection;
+        std::mutex m_collectionLock;
+
         static std::unique_ptr<AllocMapper> m_allocObject;
         static std::mutex m_lock;
 };
-std::unique_ptr<AllocMapper> AllocMapper::m_allocObject;
-std::mutex AllocMapper::m_lock;
+
 class AllocTracker {
     public: 
         AllocTracker(const char *objectName, void *parentAddr){
             m_parentPointer = parentAddr;
-            auto allocMapper = AllocMapper::GetAllocMapper();
-            allocMapper->AddObjectCreated(parentAddr, objectName);
+            AllocMapper::GetAllocMapper()->AddObjectCreated(parentAddr, objectName);
         }
         ~AllocTracker(){
-            auto allocMapper = AllocMapper::GetAllocMapper();
-            allocMapper->RemoveObjectDeleted(m_parentPointer);
+            AllocMapper::GetAllocMapper()->RemoveObjectDeleted(m_parentPointer);
         }
     private:
         void *m_parentPointer;
@@ -68,4 +76,9 @@ class AllocTracker {
 #define DECLARE_ALLOC() AllocTracker m_allocTrackerObj{__PRETTY_FUNCTION__, reinterpret_cast<void*>(this)}
 #define DECLARE_ALLOC_NAME(x) AllocTracker m_allocTrackerObj{x, reinterpret_cast<void*>(this)}
 
+#else
+#define DECLARE_ALLOC()
+#define DECLARE_ALLOC_NAME(x)
 #endif
+
+#endif // include guard
