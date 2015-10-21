@@ -1,0 +1,17 @@
+Problem Statement
+    	Frog Suwako lives on a two-dimensional plane. She likes to jump. Currently, she is located in the point (0, 0). She would like to reach the point (x, y). You are given the ints x and y.
+
+
+
+
+
+Suwako wants to reach the desired destination in a specific way: using a series of jumps with pre-determined lengths. You are given these lengths in a int[] jumpLenghts. For example, if jumpLengths = { 2, 5 }, Suwako must make a jump of length exactly 2, followed by a jump of length exactly 5.
+
+
+
+
+
+Note that Suwako can jump onto arbitrary points in the plane, they are not required to have integer coordinates. Return "Able" (quotes for clarity) if Suwako is able to reach her desired destination from (0, 0) using the desired sequence of jump lengths. Otherwise, return "Not able".
+
+
+Hint: Think about a closed polygon :)
