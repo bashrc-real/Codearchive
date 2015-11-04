@@ -73,6 +73,9 @@ private:
                     if (preNode->next.compare_exchange(nextToDelete, next)) {
                         return;
                     }
+                    else {
+                        nextToDelete->next = ReadSafeAddress(nextToDelete->next);
+                    }
             }
         } while (true);
     }
