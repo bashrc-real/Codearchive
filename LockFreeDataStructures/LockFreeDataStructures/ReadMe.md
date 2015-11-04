@@ -2,7 +2,7 @@
 This repo will mostly have assignement level code for implementing  lockless data structures. The idea was inspired by a colleague. As a future goal I can try to
 benchmark with corresponding lock based algorithms.
  - Data structures implemented till now:
-      - Linked list
+      - Linked list </br>
         The addition in linked list in a lockfree way is quite trivial. </br>
         pseudo code:
         ```
