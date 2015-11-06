@@ -82,7 +82,7 @@ string name;
 ```
 
 To write a correct comparator function one will require at least three if's. 
-This could be written using tie as 
+Instead this could be written using tie as 
 ```cpp
 bool operator<(const Person &a, const Person &b)
 {
