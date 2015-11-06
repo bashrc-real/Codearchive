@@ -5,7 +5,7 @@ Almost all stl containers rely on [strict weak ordering](https://www.sgi.com/tec
 A strict weak ordering defines the relative position of elements in terms of precedence of one item over other. For eg. if you have a room full of person and you have to form a queue based on their height, a person with "lesser" height will "precede" the person with greater height. For a function to be satisfying strict weak ordering following conditions need to be met:
 
 -  <code> a < b => !(b < a) </code>
--  <code> !(a < b) && !(b < a) => a≡b 
+-  <code> !(a < b) && !(b < a) => a≡b  </code>
 
 Note that the "≡" sign denotes **equivalence** which can be quite different from equality. Item 19 of "Effective Stl by Scott Meyers"
 is often quoted as a good source for understanding the difference.
@@ -26,11 +26,13 @@ size_t binary_search(const container<T> &a, const T &key, std::function<bool(con
 }
 
 ```
-Note that this line is equivalent to a≡b 
+
+This line is equivalent to a≡b 
 
 ```cpp
         if (!less(a[mid], key) && !less(key, a[mid]))
 ```
+
 This is sort of similar to how <code> map::find </code> and <code>set::find </code> would work.
 
 ## What could go wrong  #
