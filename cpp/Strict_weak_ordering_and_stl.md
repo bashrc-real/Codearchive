@@ -17,8 +17,8 @@ template <typename T>
 size_t binary_search(const container<T> &a, const T &key, std::function<bool(const T &, const T&)> less){
     size_t high = a.size(),low = 0;
     while(low < high){
-		size_t mid = low + (high - low) >> 1;
-        if (!less(a[mid], key) && !less(key, a[mid]))            return mid;
+        size_t mid = low + (high - low) >> 1;
+        if (!less(a[mid], key) && !less(key, a[mid])) return mid;
         else if (less(a[mid], key)) mid = low + 1;
         else mid = high;
     }
