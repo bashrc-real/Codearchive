@@ -19,8 +19,8 @@ size_t binary_search(const container<T> &a, const T &key, std::function<bool(con
     while(low < high){
         size_t mid = low + ((high - low) >> 1);
         if (!less(a[mid], key) && !less(key, a[mid])) return mid;
-        else if (less(a[mid], key)) mid = low + 1;
-        else mid = high;
+        else if (less(a[mid], key)) low = mid + 1;
+        else high = mid;
     }
     return a.size(); // failure condition 
 }
