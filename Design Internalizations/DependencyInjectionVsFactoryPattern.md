@@ -1,6 +1,7 @@
 # Dependency injection vs Factory Pattern #
 ------
-(Out of patience? Go to [TLDR](#TLDR) directly
+(Out of patience? Go to [TLDR](#TLDR) directly)
+
 Both dependency injection and factory pattern are manifestation of [Inversion of Control] [1]. Both patterns deal with delegating the responsibility of creation of objects. 
 ## Factory pattern ##
 In factory pattern the object requiring a dependency creates it by using a black box entity (Factory). The factory is usually part of a different module than those invoking the factory
@@ -62,7 +63,7 @@ void Car::ArmBatMobile(){
 ### Ok. I used DI and now my constructor is a mess. ###
 While the answer would mostly depend on what your class intends to do (if your class has too many dependencies, it already smells like it needs a refactoring), you may want to look up [facade service][4].  
 
-### TLDR  
+### <a name="TLDR"></a>TLDR  
 ------
 If your focus is to have a testable design, and you have to chose a model of creation of objects, consider dependency injection over factory pattern. Obviously if you have weighed all options on how static factories can be mocked effectively, then a factory is what you need. 
 
