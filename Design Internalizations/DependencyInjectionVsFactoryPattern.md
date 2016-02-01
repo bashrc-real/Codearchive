@@ -1,6 +1,6 @@
 # Dependency injection vs Factory Pattern #
 ------
-(Out of patience? Go to [TLDR](#TLDR) directly)
+(Out of patience? Go to [TLDR][5] directly)
 
 Both dependency injection and factory pattern are manifestation of [Inversion of Control] [1]. Both patterns deal with delegating the responsibility of creation of objects. 
 ## Factory pattern ##
@@ -71,3 +71,4 @@ If your focus is to have a testable design, and you have to chose a model of cre
 [2]:http://stackoverflow.com/questions/5626193/what-is-a-monkey-patch
 [3]:http://blogs.msdn.com/b/rflaming/archive/2008/11/30/microsoft-detours-i-wish-i-had-deeper-hooks-into-windows.aspx
 [4]:http://blog.ploeh.dk/2010/02/02/RefactoringtoAggregateServices/
+[5]:https://github.com/bashrc-real/Codearchive/blob/master/Design%20Internalizations/DependencyInjectionVsFactoryPattern.md#TLDR
