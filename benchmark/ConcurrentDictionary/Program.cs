@@ -59,9 +59,9 @@ namespace BenchmarkConcurrentDictionary
 
             public void performWrite(IList<string> sampleData)
             {
+                var randomizer = new Random();
                 Parallel.ForEach(sampleData, (string value) =>
                     {
-                        var randomizer = new Random();
                         lock (lockObject)
                         {
                             values.Add(value, randomizer.Next().ToString());
