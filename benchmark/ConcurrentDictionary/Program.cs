@@ -92,9 +92,9 @@ namespace BenchmarkConcurrentDictionary
 
             public void performWrite(IList<string> sampleData)
             {
+                var randomizer = new Random();
                 Parallel.ForEach(sampleData, (string value) =>
                 {
-                    var randomizer = new Random();
                     if (!values.TryAdd(value, randomizer.Next().ToString()))
                     {
                         throw new InvalidOperationException();
