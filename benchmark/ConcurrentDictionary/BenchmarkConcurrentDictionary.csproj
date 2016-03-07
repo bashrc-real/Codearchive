@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BenchmarkConcurrentDictionary</RootNamespace>
-    <AssemblyName>TryConnectDb</AssemblyName>
+    <AssemblyName>BenchmarkConcurrentDictionary</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
