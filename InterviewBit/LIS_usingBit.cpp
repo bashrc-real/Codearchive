@@ -1,4 +1,12 @@
 
+//  Implementing LIS using fenwick trees(Binary indexed trees). The idea is to re-number the values to their ranking. 
+//  Notice that the renumbering will not effect the actual answer since the relative ordering of the elements remain same.
+//  For eg if the array is {10,4,3,11} the renumbered array would be {3,2,1,4}.
+//  In case there are duplicates the number with greater index value will have lower rank.
+//  for eg for array {2,1,1,3,4} the renumbered array would be {3,2,1,4,5}
+//  The same solution will work for longest non-decreasing subsequence by just changing the handling of duplicates to give
+//  lower rank to value with lower index value
+//  We will use the dynamic programming approach but replace the inner for loop with range queries from the BIT.
 #include <set>
 #include <vector>
 #include <algorithm>
