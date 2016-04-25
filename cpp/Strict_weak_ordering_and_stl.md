@@ -54,7 +54,7 @@ This was more of a hypothetical scenario.  Lets take an example which I saw [rec
 A code like this 
 
 ```cpp
-void sortReverse(vector<int> values){
+void sortReverse(vector<int> &values){
     sort(values.begin(),values.end(),     std::greater_less<int>());
 }
 ``` 
