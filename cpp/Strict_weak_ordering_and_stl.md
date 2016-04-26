@@ -55,7 +55,7 @@ A code like this
 
 ```cpp
 void sortReverse(vector<int> &values){
-    sort(values.begin(),values.end(),     std::greater_less<int>());
+    sort(values.begin(),values.end(), std::greater_equal<int>());
 }
 ``` 
 
