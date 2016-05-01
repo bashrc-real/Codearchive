@@ -25,7 +25,7 @@ vector<int> SpiralOrder(const vector<vector<int>> &matrix){
     vector<int> result;
     result.reserve((matrix.size() * matrix[0].size()));
     pair<int, int> idx{0, 0};
-    while ((xBounds.first < xBounds.second) && (yBounds.first < yBounds.second) && validate(idx.first, xBounds) && validate(idx.second, yBounds)){
+    while (validate(idx.first, xBounds) && validate(idx.second, yBounds)){
         result.push_back(matrix[idx.first][idx.second]);
         ++cntr;
         if (cntr >= elemCount(xBounds, yBounds)){
