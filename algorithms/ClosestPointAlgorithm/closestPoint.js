@@ -11,7 +11,7 @@ function closestPoint(pointList) {
         if (a.X < b.X) return -1;
         return 0; 
     });
-    
+    return compute(pointList, 0, pointList.length)[1];    
 }
 
 // Divide the 2-D space recursively into smaller regions
@@ -26,7 +26,22 @@ function compute(pointsInCurrentRegion, start , end){
         return getMinimumDistance(pointsInCurrentRegion);
     }
     var mid = pointsInCurrentRegion[elemCount/2];
-    var leftD = compute(pointsInCurrentRegion, start, mid);
-    var rightD = compute(pointsInCurrentRegion, start + mid, end);
-    
+    var leftDistance = compute(pointsInCurrentRegion, start, mid);
+    var rightDistance = compute(pointsInCurrentRegion, start + mid, end);
+    var d;
+    if (leftDistance < rightDistance){
+        d = leftDistance;
+    }else{
+        d = rightDistance;
+    }
+    strip = [];
+    for (i = 0; i < elemCount; i++)
+        if (Math.abs(pointsInCurrentRegion[start + i].x - mid.x) < d[0])
+            strip.push(pointsInCurrentRegion[start + i]);
+    var minDistanceInMiddleStrip = getMinimumDistance(strip, d[0]);
+    if (d[0] < minDistanceInMiddleStrip[0]){
+        return d;
+    }else{
+        return minDistanceInMiddleStrip;
+    }
 }

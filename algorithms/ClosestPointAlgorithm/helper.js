@@ -6,14 +6,21 @@ function distSquared(point1, point2) {
     return (point1.X - point1.X) * (point1.X - point1.X) + (point1.Y - point1.Y)*(point1.Y - point1.Y)
 }
 
-function getMinimumDistance(listOfPoints) {
-    var currentMinimumDistance = Infinity;
+function getMinimumDistance(listOfPoints, currentMinimumDistance = Infinity) {
     var currentPair = new Array(2);
+    // sort the points along the y-axis
+    // for eg if the points are {(1,4), (4,1), (2,10)}
+    // the sorted order would be {(4,1), (1,4), (2,10)}
+    pointList.sort((a, b) => {
+        if (a.Y > b.Y) return 1;
+        if (a.Y < b.Y) return -1;
+        return 0; 
+    });
     for ( i = 0; i < listOfPoints.length; ++i){
-        for ( j = i + 1; j < listOfPoints.length; ++j){
+        for ( j = i + 1; j < listOfPoints.length && Math.pow(listOfPoints[j].Y - listOfPoints[i].Y, 2) < currentMinimumDistance; ++j){
             var currentDistance = distSquared(listOfPoints[i], listOfPoints[j])
-            if (currentMinimumDistance > currentDistance){
-                currentMinimumDistance = currentDistance;
+            if (minimumDistanceSquared > currentDistance){
+                minimumDistanceSquared = currentDistance;
                 currentPair[0] = i;
                 currentPair[1] = j;
             }
