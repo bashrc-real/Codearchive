@@ -1,4 +1,3 @@
-require("helper.js")
 // Input: list of points in 2-D space
 // Return : tuple with two items denoting the index of the two closest points
 function closestPoint(pointList) {
@@ -21,25 +20,27 @@ function closestPoint(pointList) {
 // Now we will have a local minima, lets say d. Find all points in the current region which are closer than d.
 // These will be points near the mid point boundary seperating two regions. Do a brute force on them to find the global minima
 function compute(pointsInCurrentRegion, start , end){
-    var elemCount = end - start + 1;
+    var elemCount = end - start;
     if (elemCount <= 3){
         return getMinimumDistance(pointsInCurrentRegion);
     }
-    var mid = pointsInCurrentRegion[elemCount/2];
+    var mid = start + Math.floor(elemCount/2);
+    var midPoint = pointsInCurrentRegion[mid];
     var leftDistance = compute(pointsInCurrentRegion, start, mid);
     var rightDistance = compute(pointsInCurrentRegion, start + mid, end);
     var d;
-    if (leftDistance < rightDistance){
+    if (leftDistance[0] < rightDistance[0]){
         d = leftDistance;
     }else{
         d = rightDistance;
     }
     strip = [];
-    for (i = 0; i < elemCount; i++)
-        if (Math.abs(pointsInCurrentRegion[start + i].x - mid.x) < d[0])
+    for (i = 0; i < elemCount; i++){
+        if (Math.abs(pointsInCurrentRegion[start + i].X - midPoint.X) < d[0])
             strip.push(pointsInCurrentRegion[start + i]);
+    }
     var minDistanceInMiddleStrip = getMinimumDistance(strip, d[0]);
-    if (d[0] < minDistanceInMiddleStrip[0]){
+    if (d[0] <= minDistanceInMiddleStrip[0]){
         return d;
     }else{
         return minDistanceInMiddleStrip;
