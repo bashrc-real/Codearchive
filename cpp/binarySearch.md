@@ -27,6 +27,7 @@ For any A which meets:
 
 `A[mid] > key =>  A[j] > key ∀  j > =  mid ` 
 
+(`=>` is read as **implies**)
 So we can safely eliminate all elements 
 **including and beyond mid**.
 
