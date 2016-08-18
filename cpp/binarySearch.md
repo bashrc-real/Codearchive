@@ -1,7 +1,7 @@
 # Binary Search
 
 **Problem Statement**:Given a sorted array, you have to tell whether an element lies in the array or not.  
-Binary search is a technique which utilizes the additional information about the ordering of the elements to reduce the number of elements that needs to be compared with the target element, by recursively dividing the array into smaller ranges(half of the range in previous step) till we get an empty range.
+Binary search is a technique which utilizes the additional information about the ordering of the elements to reduce the number of comparisons with the target element, by recursively dividing the array into smaller ranges(half of the range in previous step) till we get an empty range or we find the `search key`.
 
 pseudo-code.
 ```
@@ -19,7 +19,7 @@ pseudo-code.
             return BinarySearch(A, key, [mid+1, range.second))
 ```
 Lets convince ourselves why this works.
-At each step in the iteration we are picking the middle element and based on relative ordering of element in the middle lets say `A[mid]` with the `key`  we are eliminating one half of the array.
+At each step in the iteration we are picking the `middle` element in the `current range`. and based on relative ordering of element  with  `key`  we are eliminating one half of the array.
 Formally:
 For any A which meets:
 
@@ -28,7 +28,7 @@ For any A which meets:
 `A[mid] > key =>  A[j] > key ∀  j > =  mid ` 
 
 So we can safely eliminate all elements 
-**including and beyond including mid**.
+**including and beyond mid**.
 
 Similarly 
 
