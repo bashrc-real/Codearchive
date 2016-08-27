@@ -1,7 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-using namespace std;
+// https://www.interviewbit.com/problems/interleaving-strings/
 
 int Solution::isInterleave(string A, string B, string C) {
     // Do not write main() function.
