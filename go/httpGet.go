@@ -13,8 +13,11 @@ func main() {
 		os.Exit(-1)
 	}
 	var url = os.Args[1]
-	result := getDataFromURL(url)
-	fmt.Println(result)
+	result := make(chan string)
+	go func() {
+		result <- getDataFromURL(url)
+	}()
+	fmt.Println(<-result)
 }
 
 func getDataFromURL(url string) string {
