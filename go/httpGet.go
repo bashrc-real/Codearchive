@@ -4,10 +4,16 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func main() {
-	result := getDataFromURL("https://www.google.com")
+	if len(os.Args) != 2 {
+		fmt.Println("Pass the url to get data")
+		os.Exit(-1)
+	}
+	var url = os.Args[1]
+	result := getDataFromURL(url)
 	fmt.Println(result)
 }
 
