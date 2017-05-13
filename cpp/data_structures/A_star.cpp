@@ -114,8 +114,7 @@ void getNextMoves(position curNode, deque<position>* nextPosition){
         }        
     }
 }
-
-unsigned int h_cost(position currentPosition){
++   unsigned int h_cost(position currentPosition){
     position destination = getDestinationNode();
     return static_cast<unsigned int>(sqrt((destination.first - currentPosition.first) * (destination.first - currentPosition.first)+
            (destination.second - currentPosition.second) * (destination.second - currentPosition.second)));
