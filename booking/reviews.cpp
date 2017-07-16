@@ -1,3 +1,14 @@
+// You are given a set of keywords.
+// and a set of reviews for some hotel. Each hotel has a hotel id
+// Return the list of hotels sorted in the order of maximum number of words which are in the set of keywords
+// for eg: Keywords : ["balcony", "lobby"] 
+// and hotel reviews: (in format [hotelId, review])
+// [1, "This hotel has a nice balcony and a clean lobby. The balcony overlooks the pool"]
+// [2, "random sentence"]
+// [3, "good balcony, nice lobby"]
+// The output would be [1,3,2]. First hotel(id: 1) has 3 matches (balcony twice and lobby once)
+// third hotel has 2 matches (balcony and lobby once each). And the second hotel has no matches
+
 #include <map>
 #include <set>
 #include <list>

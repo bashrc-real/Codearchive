@@ -1,3 +1,10 @@
+// There are M customer care executives in your company. Each exec can handle one call at a time
+// You are given a log of format [S, E] where S = Start time of call and E= End time of call.
+// You have to tell minimum number of execs needed
+// For eg for input {[1, 100][2,50], [10,20]} the answer would be 3
+// for input {[1,10][11,20][15,18]} the answer would be 2. Any one would handle the first call and then free at 10.
+// Then he can take the next call at 11. When the call comes at 15 the second one would handle it.
+
 #include <map>
 #include <set>
 #include <list>

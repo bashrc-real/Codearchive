@@ -1,3 +1,6 @@
+// Given a list of arrays with 4 integers tell how many of those arrays represent
+// square, rectangle, arbitrary polygon, none
+ 
 #include <map>
 #include <set>
 #include <list>
