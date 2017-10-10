@@ -1,3 +1,5 @@
+//http://codeforces.com/problemset/problem/327/A
+
 #include <vector>
 #include <list>
 #include <map>
@@ -17,6 +19,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <limits>
 #define PR(x) cout<<#x<<"="<<x<<endl
 #define READ2(x,y) scanf("%d %d",&x,&y)
 #define REP(i,a,b) for(int i=a;i<b;i++)
@@ -36,12 +39,12 @@ template <typename T, size_t const maxVal>
 class BIT{
     public:
         BIT(){
-            m_tree.resize(maxVal, numeric_limits<T>::max());
+            m_tree.resize(maxVal);
         
         }
         void update(int idx, T val){
             while(idx <= maxVal){
-                m_tree[idx] = min(m_tree[idx], val);
+                m_tree[idx] += val;
                 idx += (idx & -idx);
             }    
         }
@@ -49,30 +52,29 @@ class BIT{
            long long sm = 0;
            while(idx>0){
                 sm += m_tree[idx];
-                idx  -= (idx & -idx);
+                idx -= (idx & -idx);
            }
            return T(sm); 
         }
     private:
         vector<T> m_tree;
 };
+
 void solve(){
     int N;
     S(N);
-    BIT bt(N+1);
-    REP(i,0,N){
-        int tmp;
-        S(tmp);
-        bt.update(i, tmp);
+    vector<int> values(N);
+    for (int i = 0; i < N; ++i) S(values[i]);
+    int cntr[2] = {0};
+    int mxCntr[2] = {0};
+    for (int idx = 1; idx < N; ++idx){
+        if (values[idx] == values[idx-1]){
+            ++cntr[values[idx]];
+        }else{
+            mxCntr[values[idx]] = max(cntr[values[idx-1]], cntr[values[idx-1]]);
+            cntr[values[idx-1]] = 0;
+            cntr[values[idx]] = 1;
+        }
     }
-    
-}
-int main(){
-    #ifndef ONLINE_JUDGE
-    test = 3;
-    #endif
-    for (int i=0;i<test;i++){
-        solve();
-    }
-}
-
+    mxCntr[values[idx]] = max(cntr[values[idx-1]], cntr[values[idx-1]]);
+}   

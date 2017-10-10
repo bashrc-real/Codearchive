@@ -20,19 +20,7 @@
 #include <ctime>
 #include <thread>
 #include <chrono>
-#define PR(x) cout<<#x<<"="<<x<<endl
-#define READ2(x,y) scanf("%d %d",&x,&y)
-#define REP(i,a,b) for(unsigned int i=a;i<b;i++)
-#define RP(i,a) for(int i=0;i<a;i++)
-#define tr(iter,container) for(auto iter = container.begin();iter!=container.end();iter++) 
-#define S(x) cin>>x
-#define PRARR(x,n) for(int i=0;i<n;i++) cout<<#x<<"["<<i<<"]= "<<x[i]
-#define rd(arr,i,n) for(int i=0;i<n;i++) cin>>arr[i]
-#define PB push_back
-#define SUM(arr,n,sum) {sum=0;for(int i=0;i<n;i++) sum+=arr[i]; }
-#define VC vector
-#define CLR(arr) memset(arr,0,sizeof(arr))
-#define FILL(arr,val) memset(arr,val,sizeof(arr))
+
 using namespace std;
 int test = 1;
 
@@ -90,9 +78,7 @@ void generateInput(set<position> *barriers){
     unsigned int y;
     while(cin >> x >> y){
     size_t maxBarriers = rand() % (100);
-    REP(i, 0, maxBarriers){
-      //  unsigned int x = rand()%gridSize + 1;
-       // unsigned int y = rand()%gridSize + 1;
+    for(size_t i = 0; i < maxBarriers; ++i){
         auto barrierNode = position(x, y);
         if (barrierNode != getDestinationNode()){
             barriers->insert(barrierNode);
@@ -128,8 +114,7 @@ void getNextMoves(position curNode, deque<position>* nextPosition){
         }        
     }
 }
-
-unsigned int h_cost(position currentPosition){
++   unsigned int h_cost(position currentPosition){
     position destination = getDestinationNode();
     return static_cast<unsigned int>(sqrt((destination.first - currentPosition.first) * (destination.first - currentPosition.first)+
            (destination.second - currentPosition.second) * (destination.second - currentPosition.second)));
