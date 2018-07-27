@@ -1,4 +1,5 @@
-// Complete the maxDifference function below.
+// given an array a (-10^6 <= a[i] <= 10^6) find max(a[i] - a[j]) where i > j
+
 int maxDifference(vector<int> a) {
     if (a.empty()) return -1;
 
